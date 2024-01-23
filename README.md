@@ -1,8 +1,6 @@
 # Minesweeper Game
 
-## Minesweeper é o clássico jogo Campo Minado, criado em Assemble, para a disciplina de CC0020 - Arquitetura de Computadores.
-
-Este projeto implementa o jogo Minesweeper em linguagem Assembly MIPS, dividindo o código em vários arquivos para facilitar a organização. Cada funcionalidade do jogo está contida em um arquivo separado.
+Minesweeper é o clássico jogo Campo Minado, criado em Assemble, para a disciplina de CC0020 - Arquitetura de Computadores.
 
 ## Estrutura do Repositório
 
