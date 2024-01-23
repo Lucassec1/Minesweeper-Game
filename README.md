@@ -46,10 +46,3 @@ O arquivo executável Mars.jar está incluído neste repositório.
    ```
 3. No Mars MIPS, abra cada arquivo .asm individualmente e monte/executa o código. 
 4. A saída do jogo será exibida na console do Mars MIPS.
-
-### Observações
-
-1. As macros no arquivo macros.asm foram criadas para simplificar o desenvolvimento e podem ser utilizadas conforme necessário.
-2. Este projeto foi desenvolvido para a disciplina de Arquitetura de Computadores, período 2023.2, pelo professor Ramon Nepomuceno na UFCA.
-
-Divirta-se jogando Minesweeper em Assembly MIPS!
