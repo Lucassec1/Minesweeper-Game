@@ -23,10 +23,10 @@ countAdjacentBombs:
 			addi $t0, $s2, 1 # column + 1
 			bge $s4, $t0, end_for_j
 			
-			bge $s3, $zero, falha_condicao
-			blt $s3, SIZE, falha_condicao
-			bge $s4, $zero, falha_condicao
-			blt $s4, SIZE, falha_condicao
+			blt $s3, $zero, falha_condicao
+			bge $s3, SIZE, falha_condicao
+			blt $s4, $zero, falha_condicao
+			bge $s4, SIZE, falha_condicao
 			
 			# falta adicionar com acessar o board[i][j] == -2
 			
