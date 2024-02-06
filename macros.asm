@@ -11,7 +11,7 @@
 	sw $s5, 20 ($sp)
 	sw $s6, 24 ($sp)
 	sw $s7, 28 ($sp)
-  sw $ra, 32 ($sp)
+  	sw $ra, 32 ($sp)
 .end_macro
 
 .macro restore_context
@@ -23,6 +23,6 @@
 	lw $s5, 20 ($sp)
 	lw $s6, 24 ($sp)
 	lw $s7, 28 ($sp)
-  lw $ra, 32 ($sp)
-  addi $sp, $sp, 36
+  	lw $ra, 32 ($sp)
+  	addi $sp, $sp, 36
 .end_macro

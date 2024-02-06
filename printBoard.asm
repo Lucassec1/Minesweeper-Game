@@ -8,36 +8,36 @@ printBoard:
 	move $s1, $a1
 	
 	li $v0, 11 
-  li $a0, 32 									# printf("    ");
+  li $a0, 32 							# printf("    ");
   syscall							
   syscall
   syscall
   syscall
   
   
-  li $t0, 0
+  li $t0, 0							# j = 0
   begin_for_j1_pb:						# for (int j = 0; j < SIZE; ++j)	
   li $t1, SIZE
   bge $t0, $t1, end_for_j1_pb
   li $v0, 11 
-  li $a0, 32 									#print (' ')
+  li $a0, 32 								#print (' ')
   syscall
-  li $v0, 1
-  move $a0, $t0 							#print ('i')
+  li $v0, 1								#print_int
+  move $a0, $t0 							#print ('j')
   syscall
-  li $v0, 11
-  li $a0, 32 									#print (' ')
+  li $v0, 11								#print_char
+  li $a0, 32 								#print (' ')
   syscall
-  addi $t0, $t0, 1
+  addi $t0, $t0, 1							#j++
   j begin_for_j1_pb
   end_for_j1_pb:
    
-  li $v0, 11
-  li $a0, 10 									# printf("\n");
+  li $v0, 11								#print_char
+  li $a0, 10 								# printf("\n");
   syscall
     
-  li $v0, 11
-  li $a0, 32 									# printf("   ");
+  li $v0, 11								#print_char
+  li $a0, 32 								# printf("   ");
   syscall
   syscall
   syscall
@@ -72,7 +72,7 @@ printBoard:
   li $a0, 32 									#printf(" ")
   syscall
   
-	li $v0, 11
+  li $v0, 11
   li $a0, 124 								# printf("|")
   syscall
   
@@ -88,7 +88,7 @@ printBoard:
   li $a0, 32 									# print(" ")
   syscall
   	
-  sll $t2, $t0, 5
+  	sll $t2, $t0, 5
 	sll $t3, $t1, 2
 	
 	add $t4, $t2, $t3

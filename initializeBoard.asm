@@ -2,7 +2,7 @@
 .globl inicialializeBoard
 
 inicialializeBoard:
-	save_context
+	save_context # salva os dados na memória
 	move $s0, $a0 
   
   li $s1,0 # i = 0

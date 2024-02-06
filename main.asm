@@ -1,18 +1,18 @@
 .include "macros.asm"
 
 .data
-	msg_row:  		.asciiz "Enter the row for the move: "
- 	msg_column:  	.asciiz "Enter the column for the move: "
- 	msg_win:  		.asciiz "Congratulations! You won!\n"
- 	msg_lose:  		.asciiz "Oh no! You hit a bomb! Game over.\n"
-	msg_invalid:  .asciiz "Invalid move. Please try again.\n"
+	msg_row:  	.asciiz "Insira a linha para a movimentação: "
+ 	msg_column:  	.asciiz "Insira a coluna para a movimentação: "
+ 	msg_win:  	.asciiz "Parabéns! Você ganhou!\n"
+ 	msg_lose:  	.asciiz "Oh não! Você acertou uma bomba! Game Over.\n"
+	msg_invalid:  	.asciiz "Movimento inválido. Por favor, tente novamente.\n"
 
 .globl main 	 	
 .text
 
 main:
-  addi $sp, $sp, -256 	# board; 
-  li $s1, 1	     				# int gameActive = 1;
+  addi $sp, $sp, -256 	# armazena espaço para o tabuleiro (8 x 8) com quantidade de 4 bits inteiro; 
+  li $s1, 1		# int gameActive = 1;
   move $s0, $sp
   move $a0, $s0 
   
@@ -27,18 +27,19 @@ main:
   jal printBoard				 # printBoard(board,0); // Shows the board without bombs
   
   la $a0, msg_row		
-  li $v0, 4							# printf("Enter the row for the move: ");
+  li $v0, 4					# printf_string
   syscall
   
-  li $v0, 5  						# scanf("%d", &row);
+  li $v0, 5  					# scanf("%d", &row);
   syscall
   move $s2, $v0
   
   la $a0, msg_column
-  li $v0, 4 						# printf("Enter the column for the move: ");
+  li $v0, 4 					# printf_string
   syscall
+  move $s2, $v0
   
-  li $v0, 5 						# scanf("%d", &column);
+  li $v0, 5 					# scanf("%d", &column);
 
   syscall
   move $s3, $v0 
