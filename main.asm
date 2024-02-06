@@ -50,12 +50,12 @@ main:
   blt $s3, $zero, else_invalid
   bge $s3, $t0, else_invalid
   
-  addi $sp, $sp, -4
-  sw $s0, 0 ($sp)
+ 
+  move $a2, $s0 # passo como parametro o inicio do board
   move $a0, $s2
   move $a1, $s3
   jal play
-  addi $sp, $sp, 4
+
   bne $v0, $zero, else_if_main 	# if (!play(board, row, column)) {
     li $s1, 0										# gameActive = 0;
   la $a0, msg_lose							# printf("Oh no! You hit a bomb! Game over.\n");
