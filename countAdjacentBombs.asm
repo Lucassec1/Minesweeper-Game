@@ -9,9 +9,9 @@ countAdjacentBombs:
 	move $s2, $a1 # int coluna
 	
 	sub $t0, $s1, 1
-	li $s3, $t0 # i = row - 1
+	move $s3, $t0 # i = row - 1
 	sub $t0, $s2, 1
-	li $s4, $t0 # j = column - 1
+	move $s4, $t0 # j = column - 1
 	
 	li $s5, 0 # count = 0
 	
@@ -44,5 +44,5 @@ countAdjacentBombs:
 		j begin_for_i
 	end_for_i: 
 	restore_context
-  	jr $ra 
+jr $ra 
 	
