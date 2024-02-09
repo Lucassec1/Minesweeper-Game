@@ -11,15 +11,16 @@ countAdjacentBombs:
 	move $s2, $a1 # int coluna
 	
 	sub $t0, $s1, 1
-	move $s3, $t0 # i = row - 1
-	sub $t0, $s2, 1
-	move $s4, $t0 # j = column - 1
+	move $s3, $t0 # i = row - 1	
 	
 	li $s5, 0 # count = 0
 	
 	begin_for_i:
 		addi $t0, $s1, 1 # row + 1 
 		bgt $s3, $t0, end_for_i # if(i > row + 1) end_for_i
+		
+		sub $t0, $s2, 1
+		move $s4, $t0 # j = column - 1
 		
 		begin_for_j:
 			addi $t0, $s2, 1 # column + 1

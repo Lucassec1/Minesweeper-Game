@@ -24,7 +24,24 @@ play:
 	# Verify if the cell contain a bomb
 	beq $t0, $t1, falha_condicao
 	
+	li $t1, -2
+	
+	bne $t0, $t1, retorne_um
+
 	# If the cell does not contain a bomb, call revealAdjacentCells
+	move $a0, $s1 # Pass the row as argument
+	move $a1, $s2 # Pass the column as argument
+	move $a2, $s3 # Pass the pointer to the array as argument
+	
+	jal countAdjacentBombs
+	move $t1, $v0 # retorno de bombas
+	
+	move $t0, $t1 # board[i][j] = x
+	
+	li $t3, 0
+	
+	bne $t1, $t3, retorne_um
+	
 	move $a0, $s1 # Pass the row as argument
 	move $a1, $s2 # Pass the column as argument
 	move $a2, $s3 # Pass the pointer to the array as argument
@@ -39,4 +56,9 @@ falha_condicao:
 	# If the call contain a bomb, return 0 (end game)
 	li $v0, 0
 	restore_context
-	jr $ra 
+	jr $ra
+	
+retorne_um:
+	li $v0, 1
+	restore_context
+	jr $ra

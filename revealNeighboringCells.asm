@@ -12,14 +12,15 @@ revealNeighboringCells:
 	
 	sub $t0, $s1, 1
 	move $s3, $t0 # i = row - 1
-	sub $t0, $s2, 1
-	move $s4, $t0 # j = column - 1
 	
 	begin_for_i:
 		addi $t0, $s1, 1 # row + 1 
 		bgt $s3, $t0, end_for_i # if(i > row + 1) end_for_i
 		
+		sub $t0, $s2, 1
+		move $s4, $t0 # j = column - 1
 		begin_for_j:
+		
 			addi $t0, $s2, 1 # column + 1
 			bgt $s4, $t0, end_for_j # if(j > column + 1) end_for_i
 			
@@ -44,7 +45,7 @@ revealNeighboringCells:
 			jal countAdjacentBombs
 			move $s7, $v0 # x = countAdjacentBombs();
 			
-			sw $s7, 0($t0)
+			# sw $s7, 0($t0) # board[i][j] = x
 			
 			li $t1, 0
 			beq $s7, $t1, recursividade

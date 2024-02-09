@@ -88,7 +88,7 @@ printBoard:
   li $a0, 32 									# print(" ")
   syscall
   	
-  	sll $t2, $t0, 5
+  sll $t2, $t0, 5
 	sll $t3, $t1, 2
 	
 	add $t4, $t2, $t3
