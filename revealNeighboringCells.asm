@@ -4,11 +4,10 @@
 
 revealNeighboringCells:
 	save_context # salva os dados na memória
-
-	move $s6, $a2 # &board
 		
 	move $s1, $a0 # int row
 	move $s2, $a1 # int coluna
+	move $s6, $a2 # &board
 	
 	sub $t0, $s1, 1
 	move $s3, $t0 # i = row - 1
@@ -19,8 +18,8 @@ revealNeighboringCells:
 		
 		sub $t0, $s2, 1
 		move $s4, $t0 # j = column - 1
-		begin_for_j:
 		
+		begin_for_j:
 			addi $t0, $s2, 1 # column + 1
 			bgt $s4, $t0, end_for_j # if(j > column + 1) end_for_i
 			
@@ -34,18 +33,19 @@ revealNeighboringCells:
 			add $t0, $t0, $s4
 			li $t1, 4
 			mul $t0, $t0, $t1
-			add $t0, $t0, $s6
+			add $s5, $t0, $s6
 			
-			lw $t0, 0($t0) # board[i][j]
-			
+			lw $s7, 0($s5) # board[i][j]
 			li $t1, -2
+			bne $s7, $t1, falha_condicao # if(board[i][j] != -2) falha_condicao
 			
-			bne $t0, $t1, falha_condicao
+			move $a0, $s3  # int row
+			move $a1, $s4 # int coluna
+			move $a2, $s6  # &board
 			
 			jal countAdjacentBombs
-			move $s7, $v0 # x = countAdjacentBombs();
-			
-			# sw $s7, 0($t0) # board[i][j] = x
+			move $t1, $v0 # retorno de bombas
+			sw $t1, 0($s5)# board[i][j] = x
 			
 			li $t1, 0
 			beq $s7, $t1, recursividade
@@ -67,5 +67,5 @@ falha_condicao:
 recursividade:
 	move $a0, $s3
 	move $a1, $s4
-	move $a2, $t0
+	move $a2, $s6
 	j revealNeighboringCells

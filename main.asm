@@ -1,3 +1,4 @@
+
 .include "macros.asm"
 
 .data
@@ -37,10 +38,8 @@ main:
   la $a0, msg_column
   li $v0, 4 					# printf_string
   syscall
-  move $s2, $v0
   
   li $v0, 5 					# scanf("%d", &column);
-
   syscall
   move $s3, $v0 
   
@@ -57,7 +56,7 @@ main:
   jal play
 
   bne $v0, $zero, else_if_main 	# if (!play(board, row, column)) {
-    li $s1, 0										# gameActive = 0;
+  li $s1, 0								# gameActive = 0;
   la $a0, msg_lose							# printf("Oh no! You hit a bomb! Game over.\n");
   li $v0, 4
   syscall

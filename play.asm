@@ -5,9 +5,9 @@
 play:
 	save_context
 	
-	move $s3, $a2 # Pointer to array (board)
 	move $s1, $a0 # Row
 	move $s2, $a1 # Column
+	move $s3, $a2 # Pointer to array (board)
 	
 	# Calculates cell address in array
 	li $t0, SIZE
@@ -15,18 +15,18 @@ play:
 	add $t0, $t0, $s2
 	li $t1, 4
 	mul $t0, $t0, $t1
-	add $t0, $t0, $s3
-			
-	lw $t0, 0($t0) # Load the value in cell (board[i][j])
+	add $s4, $t0, $s3
+		
+	lw $s5, 0($s4) # Load the value in cell (board[i][j])
 			
 	li $t1, -1
 	
 	# Verify if the cell contain a bomb
-	beq $t0, $t1, falha_condicao
+	beq $s5, $t1, falha_condicao
 	
 	li $t1, -2
 	
-	bne $t0, $t1, retorne_um
+	bne $s5, $t1, retorne_um
 
 	# If the cell does not contain a bomb, call revealAdjacentCells
 	move $a0, $s1 # Pass the row as argument
@@ -36,7 +36,7 @@ play:
 	jal countAdjacentBombs
 	move $t1, $v0 # retorno de bombas
 	
-	move $t0, $t1 # board[i][j] = x
+	sw $t1, 0($s4)# board[i][j] = x
 	
 	li $t3, 0
 	
@@ -47,18 +47,13 @@ play:
 	move $a2, $s3 # Pass the pointer to the array as argument
 	jal revealNeighboringCells
 	
-	# Restore the context and returns 1 (game continue)
-	li $v0, 1
-	restore_context
-	jr $ra 
-	
 falha_condicao:
 	# If the call contain a bomb, return 0 (end game)
-	li $v0, 0
 	restore_context
+	li $v0, 0
 	jr $ra
 	
 retorne_um:
-	li $v0, 1
 	restore_context
+	li $v0, 1
 	jr $ra
