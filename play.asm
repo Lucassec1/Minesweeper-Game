@@ -46,6 +46,7 @@ play:
 	move $a1, $s2 # Pass the column as argument
 	move $a2, $s3 # Pass the pointer to the array as argument
 	jal revealNeighboringCells
+	j retorne_um
 	
 falha_condicao:
 	# If the call contain a bomb, return 0 (end game)
