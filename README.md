@@ -1,6 +1,6 @@
 # Minesweeper Game
 
-Minesweeper é o clássico jogo Campo Minado, criado em Assemble, para a disciplina de CC0020 - Arquitetura de Computadores.
+Minesweeper é o clássico jogo Campo Minado, criado em Assemble, para a disciplina de CC0020 - Arquitetura de Computadores junto com o professor Ramon Santos Nepomuceno.
 
 ## Estrutura do Repositório
 
