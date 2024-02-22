@@ -209,11 +209,12 @@ int checkVictory(int board[][SIZE]) {
 - **initializeboard.asm**: Implementa a função para inicializar o tabuleiro.
 - **plantbombs.asm**: Implementa a função para posicionar as bombas no tabuleiro.
 - **macros.asm**: Contém macros úteis para facilitar o desenvolvimento em MIPS.
+- **play.asm**: Implementa a função de jogar, responsável por registrar cada jogada do player no tabuleiro.
+- **checkvictory.asm**: Implementa a função que verifica se o jogador venceu ou não.
+- **revealcells.asm**: Implementa a função que revela as células quando não possuem bombas adjacentes.
 - **Mars.jar**: Executável do Mars MIPS, necessário para rodar os arquivos .asm.
 
 - **minesweeper.c**: Contém a implementação em C do jogo Minesweeper. Este arquivo serve como referência para a lógica do jogo e pode ser utilizado para comparação com as implementações em Assembly MIPS.
-
-- **play.asm**, **checkvictory.asm**, **revealcells.asm**: Arquivos em branco. Os alunos devem implementar essas funções em Assembly MIPS.
 
 ## Instruções de Execução
 
