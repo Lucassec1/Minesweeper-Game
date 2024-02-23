@@ -2,10 +2,10 @@
 
 .data
 	msg_row:  			.asciiz "Insira a linha para a movimentação: "
- 	msg_column:  		.asciiz "Insira a coluna para a movimentação: "
+ 	msg_column:  			.asciiz "Insira a coluna para a movimentação: "
  	msg_win:  			.asciiz "Parabéns! Você ganhou!\n"
  	msg_lose:  			.asciiz "Oh não! Você acertou uma bomba! Game Over.\n"
-	msg_invalid:  	.asciiz "Movimento inválido. Por favor, tente novamente.\n"
+	msg_invalid:  			.asciiz "Movimento inválido. Por favor, tente novamente.\n"
 
 .globl main 	 	
 .text
